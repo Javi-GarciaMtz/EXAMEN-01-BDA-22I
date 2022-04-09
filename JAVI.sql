@@ -14,7 +14,7 @@ CREATE TABLE gps (
 ------------------------------------------------
 
 ----------> Cabecera del paquete <----------
-CREATE OR REPLACE PACKAGE pqt_gps AS
+CREATE OR REPLACE PACKAGE gest_gps AS
 
 CURSOR cursor_gps RETURN gps%ROWTYPE;
 
@@ -68,7 +68,7 @@ PROCEDURE reinicia_calificaciones( n_calificacion  gps.calificacion%TYPE );
 -- Aumentar el ID
 PROCEDURE aumentar_ID( n_id_ubicacion gps.id_ubicacion%TYPE );
 
-END pqt_gps;
+END gest_gps;
 ----------> FIN Cabecera del paquete <----------
 
 ------------------------------------------------
@@ -77,7 +77,7 @@ END pqt_gps;
 
 ----------> Cuerpo del paquete <----------
 
-CREATE OR REPLACE PACKAGE BODY pqt_gps IS
+CREATE OR REPLACE PACKAGE BODY gest_gps IS
 
 CURSOR cursor_gps RETURN gps%ROWTYPE IS SELECT * FROM gps;
 
@@ -250,7 +250,7 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('ERROR: No se permiten aumentos negativos o de 0.');
 END aumentar_ID;
 
-END pqt_gps;
+END gest_gps;
 
 ----------> FIN Cuerpo del paquete <----------
 
@@ -270,22 +270,22 @@ COMMIT;
 ROLLBACK;
 
 BEGIN
---    pqt_gps.insertar_nueva_ubicacion(1, 'Taqueria Arandas', 'Mexico', 'CDMX', 'Av. Siempre Viva, No.12', 5, 'Muy buenos tacos');
---    pqt_gps.insertar_nueva_ubicacion(2, 'Mc Donalds', 'USA', 'New York', '1st Av, 34', 3, 'Only Hamburguers');
---    pqt_gps.insertar_nueva_ubicacion(3, 'Barbacoa: El borrego feliz', 'Mexico', 'EdoDeMex', 'Av Toreo, No.35', 4, 'Barbacoa regular, pero la mejor del rumbo');
---    pqt_gps.insertar_nueva_ubicacion(4, 'Jochos Lokos', 'Mexico', 'CDMX', 'Av. de los maestros, No.124', 5, 'Los mejores jochos');
---    pqt_gps.insertar_nueva_ubicacion(5, 'Quesidogos KonQso', 'Mexico', 'Monterrey', 'Calle loos leones, 44', 5, 'Los mejores quesidogos del rumbo');
+--    gest_gps.insertar_nueva_ubicacion(1, 'Taqueria Arandas', 'Mexico', 'CDMX', 'Av. Siempre Viva, No.12', 5, 'Muy buenos tacos');
+--    gest_gps.insertar_nueva_ubicacion(2, 'Mc Donalds', 'USA', 'New York', '1st Av, 34', 3, 'Only Hamburguers');
+--    gest_gps.insertar_nueva_ubicacion(3, 'Barbacoa: El borrego feliz', 'Mexico', 'EdoDeMex', 'Av Toreo, No.35', 4, 'Barbacoa regular, pero la mejor del rumbo');
+--    gest_gps.insertar_nueva_ubicacion(4, 'Jochos Lokos', 'Mexico', 'CDMX', 'Av. de los maestros, No.124', 5, 'Los mejores jochos');
+--    gest_gps.insertar_nueva_ubicacion(5, 'Quesidogos KonQso', 'Mexico', 'Monterrey', 'Calle loos leones, 44', 5, 'Los mejores quesidogos del rumbo');
     
---    pqt_gps.borrar_ubicacion(3);
---    pqt_gps.modificar_nombre(2, 'Tlayudas Oaxaca');
---    pqt_gps.modificar_pais(2, 'Mexico');
---    pqt_gps.modificar_estado(2, 'Oaxaca');
---    pqt_gps.modificar_direccion(2, 'Av. Martin Huerta No.18');    
---    pqt_gps.modificar_calificacion(2, 10);    
---    pqt_gps.ver_ubicacion('Jochos Lokos');
---    pqt_gps.ver_ubicacion(5);
-    pqt_gps.reinicia_calificaciones(1);
---    pqt_gps.aumentar_ID(1);
+--    gest_gps.borrar_ubicacion(3);
+--    gest_gps.modificar_nombre(2, 'Tlayudas Oaxaca');
+--    gest_gps.modificar_pais(2, 'Mexico');
+--    gest_gps.modificar_estado(2, 'Oaxaca');
+--    gest_gps.modificar_direccion(2, 'Av. Martin Huerta No.18');    
+--    gest_gps.modificar_calificacion(2, 10);    
+--    gest_gps.ver_ubicacion('Jochos Lokos');
+--    gest_gps.ver_ubicacion(5);
+    gest_gps.reinicia_calificaciones(4);
+--    gest_gps.aumentar_ID(1);
 END;
 
 
